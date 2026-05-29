@@ -1,0 +1,99 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background-color: #1b4d3e; /* Verde escuro do agro */
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.silo-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: #1b4d3e;
+    margin-top: 0;
+}
+
+.sensor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+    margin: 25px 0;
+}
+
+.sensor-box {
+    background: #fafafa;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.sensor-box:hover {
+    transform: translateY(-3px);
+}
+
+.icon {
+    font-size: 2.5rem;
+}
+
+.valor {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #222;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+/* Cores de Alerta */
+.status-ok { background-color: #d4edda; color: #155724; }
+.status-alerta { background-color: #fff3cd; color: #856404; }
+.status-critico { background-color: #f8d7da; color: #721c24; }
+
+button {
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #1b5e20;
+}
+
+footer {
+    text-align: center;
+    margin-top: 5px;
+    color: #777;
+    font-size: 0.9rem;
+}

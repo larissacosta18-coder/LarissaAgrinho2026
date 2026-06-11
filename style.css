@@ -1,108 +1,134 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7f6;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #e3eae6;
     margin: 0;
     padding: 0;
-    color: #333;
+    color: #1e2b24;
 }
 
 header {
-    background-color: #1b4d3e;
-    color: white;
+    background-color: #0d261e;
+    color: #ffffff;
     text-align: center;
     padding: 20px 10px;
 }
 
 .container {
     max-width: 900px;
-    margin: 30px auto;
+    margin: 20px auto;
     padding: 0 20px;
 }
 
-.silo-card {
-    background: white;
-    border-radius: 12px;
-    padding: 25px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+.painel-status {
+    background: #ffffff;
+    padding: 15px 25px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
 }
 
-h2 {
-    color: #1b4d3e;
-    margin-top: 0;
-}
+.destaque-verde { color: #2e7d32; }
 
-.sensor-grid {
+.jogo-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
-    margin: 25px 0;
 }
 
-.sensor-box {
-    background: #fafafa;
-    border: 1px solid #e0e0e0;
+.painel-controles, .painel-campo {
+    background: #ffffff;
     border-radius: 8px;
     padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    min-height: 360px;
     text-align: center;
-    transition: transform 0.2s;
 }
 
-.sensor-box:hover {
-    transform: translateY(-3px);
+h3 { margin-top: 0; color: #0d261e; }
+
+.form-group {
+    margin: 15px 0;
+    text-align: left;
 }
 
-.sensor-titulo {
-    font-size: 0.8rem;
+label { display: block; font-weight: bold; margin-bottom: 8px; }
+
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #bdc9c4;
+    border-radius: 4px;
+}
+
+.painel-cotacao-dia {
+    background-color: #f4f7f5;
+    border: 1px dashed #1e5c47;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+#txt-cotacao-real {
+    font-size: 1.4rem;
     font-weight: bold;
-    color: #777;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
+    color: #1e5c47;
+    margin: 5px 0 0 0;
 }
-
-h3 {
-    margin: 5px 0;
-    font-size: 1.2rem;
-}
-
-.valor {
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin: 10px 0;
-    color: #222;
-}
-
-.status-badge {
-    display: inline-block;
-    padding: 5px 12px;
-    border-radius: 15px;
-    font-size: 0.85rem;
-    font-weight: bold;
-}
-
-/* Cores de Alerta */
-.status-ok { background-color: #d4edda; color: #155724; }
-.status-alerta { background-color: #fff3cd; color: #856404; }
-.status-critico { background-color: #f8d7da; color: #721c24; }
 
 button {
-    background-color: #2e7d32;
+    background-color: #1e5c47;
     color: white;
     border: none;
-    padding: 12px 25px;
+    padding: 12px;
     font-size: 1rem;
-    border-radius: 5px;
+    font-weight: bold;
+    border-radius: 4px;
     cursor: pointer;
     width: 100%;
-    font-weight: bold;
+    margin-bottom: 12px;
 }
 
-button:hover {
-    background-color: #1b5e20;
+button:hover { background-color: #0d261e; }
+
+/* NOVA PAISAGEM: Degradê simulando céu azul e gramado verde límpido */
+.cenario-paisagem-verde {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to bottom, #7fc1eb 0%, #7fc1eb 45%, #52b72c 45%, #3b9c18 100%);
+    border: 4px solid #13382c;
+    border-radius: 6px;
+    margin: 20px auto;
+    display: flex;
+    align-items: flex-end; /* Coloca as plantas brotando do chão/grama */
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.texto-campo-vazio {
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+    margin-bottom: 80px;
+}
+
+/* Renderização limpa dos sprites por cima do gramado */
+.pixel-sprite {
+    width: 110px;
+    height: 110px;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    margin-bottom: 10px; /* Alinha perfeitamente na linha da grama */
 }
 
 footer {
     text-align: center;
-    margin-top: 25px;
-    color: #777;
-    font-size: 0.9rem;
+    color: #7b8e86;
+    font-size: 0.85rem;
+    margin-top: 30px;
 }

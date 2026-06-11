@@ -1,134 +1,209 @@
+
+/* Importando uma fonte estilo Pixel/Gamer do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Poppins:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background-color: #e3eae6;
     margin: 0;
     padding: 0;
-    color: #1e2b24;
+    font-family: 'Poppins', sans-serif;
+    /* O fundo agora é a própria paisagem limpa: céu azul e gramado verde */
+    background: linear-gradient(to bottom, #7fc1eb 0%, #7fc1eb 40%, #52b72c 40%, #3b9c18 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: #ffffff;
 }
 
 header {
-    background-color: #0d261e;
-    color: #ffffff;
     text-align: center;
-    padding: 20px 10px;
-}
-
-.container {
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 0 20px;
-}
-
-.painel-status {
-    background: #ffffff;
-    padding: 15px 25px;
-    border-radius: 6px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 1.2rem;
-    font-weight: bold;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
-}
-
-.destaque-verde { color: #2e7d32; }
-
-.jogo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.painel-controles, .painel-campo {
-    background: #ffffff;
-    border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    min-height: 360px;
-    text-align: center;
+    background: rgba(13, 38, 30, 0.6); /* Vidro escuro transparente */
+    backdrop-filter: blur(5px);
+    border-bottom: 3px solid #13382c;
 }
 
-h3 { margin-top: 0; color: #0d261e; }
+header h1 {
+    font-family: 'VT323', monospace;
+    font-size: 3.5rem;
+    margin: 0;
+    letter-spacing: 2px;
+    text-shadow: 3px 3px 0px #000;
+}
+
+header p {
+    margin: 5px 0 0 0;
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 2px #000;
+}
+
+/* Layout Assimétrico e Fluido (Sem caixas duras centralizadas) */
+.container {
+    display: flex;
+    flex-direction: row;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+/* Painel de Status Flutuante no topo do jogo */
+.painel-status {
+    position: absolute;
+    top: 110px;
+    right: 40px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 2px solid #52b72c;
+    font-family: 'VT323', monospace;
+    font-size: 1.8rem;
+    display: flex;
+    gap: 20px;
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.3);
+}
+
+.destaque-verde { color: #52b72c; }
+
+/* Menu Lateral de Controles (Moderno e Fluido) */
+.painel-controles {
+    flex: 1;
+    background: rgba(20, 35, 25, 0.85); /* Fundo dark agro-futurista */
+    border: 3px solid #1e5c47;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.4);
+}
+
+.painel-controles h3 {
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
+    margin-top: 0;
+    color: #52b72c;
+    text-align: center;
+}
 
 .form-group {
-    margin: 15px 0;
-    text-align: left;
+    margin: 20px 0;
 }
 
-label { display: block; font-weight: bold; margin-bottom: 8px; }
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
 select {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     font-size: 1rem;
-    border: 2px solid #bdc9c4;
-    border-radius: 4px;
+    background: #11221a;
+    border: 2px solid #52b72c;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
 }
 
 .painel-cotacao-dia {
-    background-color: #f4f7f5;
-    border: 1px dashed #1e5c47;
-    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #52b72c;
+    padding: 12px;
     border-radius: 4px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 #txt-cotacao-real {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: #1e5c47;
+    font-family: 'VT323', monospace;
+    font-size: 2.2rem;
+    color: #52b72c;
     margin: 5px 0 0 0;
 }
 
+/* Botões Estilo Arcade/Gamer */
 button {
-    background-color: #1e5c47;
+    font-family: 'VT323', monospace;
+    font-size: 1.6rem;
+    background-color: #3b9c18;
     color: white;
     border: none;
-    padding: 12px;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 4px;
+    border-bottom: 4px solid #1e5c47;
+    padding: 10px;
+    border-radius: 8px;
     cursor: pointer;
     width: 100%;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
+    transition: all 0.1s ease;
 }
 
-button:hover { background-color: #0d261e; }
+button:hover {
+    background-color: #52b72c;
+    transform: translateY(-2px);
+}
 
-/* NOVA PAISAGEM: Degradê simulando céu azul e gramado verde límpido */
-.cenario-paisagem-verde {
-    width: 100%;
-    height: 200px;
-    background: linear-gradient(to bottom, #7fc1eb 0%, #7fc1eb 45%, #52b72c 45%, #3b9c18 100%);
-    border: 4px solid #13382c;
-    border-radius: 6px;
-    margin: 20px auto;
+button:active {
+    transform: translateY(2px);
+    border-bottom: 0px;
+}
+
+/* O Campo agora é transparente! As plantas ficam soltas direto no gramado geral */
+.painel-campo {
+    flex: 1.5;
     display: flex;
-    align-items: flex-end; /* Coloca as plantas brotando do chão/grama */
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    overflow: hidden;
+    min-height: 400px;
     position: relative;
 }
 
 .texto-campo-vazio {
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
     color: #ffffff;
-    font-weight: bold;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
-    margin-bottom: 80px;
+    text-shadow: 2px 2px 0px #000;
+    background: rgba(0,0,0,0.4);
+    padding: 10px 20px;
+    border-radius: 8px;
 }
 
-/* Renderização limpa dos sprites por cima do gramado */
+/* Plantas "brotando" direto do cenário */
 .pixel-sprite {
-    width: 110px;
-    height: 110px;
+    width: 160px;
+    height: 160px;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
-    margin-bottom: 10px; /* Alinha perfeitamente na linha da grama */
+    filter: drop-shadow(4px 4px 0px rgba(0,0,0,0.3));
+    animation: balanco 3s ease-in-out infinite alternate; /* Efeito maneiro de vento */
+}
+
+#status-planta {
+    font-family: 'VT323', monospace;
+    font-size: 1.8rem;
+    text-shadow: 2px 2px 0px #000;
+    margin-top: 15px;
+    background: rgba(0,0,0,0.5);
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+/* Animaçãozinha marota de vento para as plantas mexerem de leve */
+@keyframes balanco {
+    0% { transform: rotate(-2deg); }
+    100% { transform: rotate(2deg); }
 }
 
 footer {
     text-align: center;
-    color: #7b8e86;
-    font-size: 0.85rem;
-    margin-top: 30px;
+    background: rgba(0,0,0,0.7);
+    padding: 15px;
+    font-size: 0.9rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }

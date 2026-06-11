@@ -1,1 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroForte - Monitoramento de Silos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>AgroForte: Armazenamento Inteligente</h1>
+        <p>Monitoramento em tempo real de graos e capacidade</p>
+    </header>
 
+    <main class="container">
+        <div class="silo-card">
+            <h2>Silo Principal #01 (Soja)</h2>
+            <hr>
+            
+            <div class="sensor-grid">
+                <div class="sensor-box" id="box-peso">
+                    <div class="sensor-titulo">PESO TOTAL</div>
+                    <h3>Massa Estocada</h3>
+                    <p class="valor"><span id="txt-peso">0</span> kg</p>
+                    <small>Capacidade max: 50.000 kg</small>
+                </div>
+
+                <div class="sensor-box" id="box-umidade">
+                    <div class="sensor-titulo">UMIDADE</div>
+                    <h3>Umidade dos Graos</h3>
+                    <p class="valor"><span id="txt-umidade">0</span>%</p>
+                    <span id="status-umidade" class="status-badge">Analisando...</span>
+                </div>
+
+                <div class="sensor-box" id="box-temp">
+                    <div class="sensor-titulo">TEMPERATURA</div>
+                    <h3>Temperatura Interna</h3>
+                    <p class="valor"><span id="txt-temp">0</span>°C</p>
+                    <span id="status-temp" class="status-badge">Analisando...</span>
+                </div>
+            </div>
+
+            <button onclick="atualizarSensores()">Atualizar Sensores</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>Projeto Agro Forte 2026 - Tecnologia que Alimenta o Mundo</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

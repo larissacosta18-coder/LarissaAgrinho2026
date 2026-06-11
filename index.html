@@ -3,49 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroForte - Monitoramento de Silos</title>
+    <title>AgroForte - Simulador de Safra</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>AgroForte: Armazenamento Inteligente</h1>
-        <p>Monitoramento em tempo real de graos e capacidade</p>
+        <h1>AgroForte: Simulador de Safra</h1>
+        <p>Gerencie seus recursos, plantio e faturamento</p>
     </header>
 
     <main class="container">
-        <div class="silo-card">
-            <h2>Silo Principal #01 (Soja)</h2>
-            <hr>
-            
-            <div class="sensor-grid">
-                <div class="sensor-box" id="box-peso">
-                    <div class="sensor-titulo">PESO TOTAL</div>
-                    <h3>Massa Estocada</h3>
-                    <p class="valor"><span id="txt-peso">0</span> kg</p>
-                    <small>Capacidade max: 50.000 kg</small>
+        <div class="painel-status">
+            <div>Saldo Atual: <span class="destaque-verde" id="txt-saldo">R$ 10.000,00</span></div>
+            <div>Dia Atual: <span id="txt-dia">1</span>/30</div>
+        </div>
+
+        <div class="jogo-grid">
+            <div class="painel-controles">
+                <h3>Menu de Plantio</h3>
+                <hr>
+                <div class="form-group">
+                    <label>Escolha o Grão para Plantar:</label>
+                    <select id="select-grao" onchange="atualizarInfoPreco()">
+                        <option value="soja">Soja</option>
+                        <option value="milho">Milho</option>
+                        <option value="aveia">Aveia</option>
+                    </select>
                 </div>
 
-                <div class="sensor-box" id="box-umidade">
-                    <div class="sensor-titulo">UMIDADE</div>
-                    <h3>Umidade dos Graos</h3>
-                    <p class="valor"><span id="txt-umidade">0</span>%</p>
-                    <span id="status-umidade" class="status-badge">Analisando...</span>
+                <div class="painel-cotacao-dia">
+                    <strong>Cotacao de Hoje (Saca 60kg):</strong>
+                    <p id="txt-cotacao-real">R$ --</p>
                 </div>
 
-                <div class="sensor-box" id="box-temp">
-                    <div class="sensor-titulo">TEMPERATURA</div>
-                    <h3>Temperatura Interna</h3>
-                    <p class="valor"><span id="txt-temp">0</span>°C</p>
-                    <span id="status-temp" class="status-badge">Analisando...</span>
-                </div>
+                <button id="btn-plantar" onclick="plantarCultura()">Plantar Carga</button>
+                <button id="btn-avancar" onclick="avancarDia()" disabled style="background-color: #777;">Avançar 10 Dias</button>
+                <button id="btn-colher" onclick="colherSafra()" disabled style="background-color: #777;">Colher e Vender</button>
             </div>
 
-            <button onclick="atualizarSensores()">Atualizar Sensores</button>
+            <div class="painel-campo">
+                <h3>Seu Campo de Cultivo</h3>
+                <hr>
+                <div class="cenario-paisagem-verde" id="campo-visual">
+                    <div class="texto-campo-vazio">Clique em Plantar para iniciar</div>
+                </div>
+                <p id="status-planta" style="font-weight: bold; margin-top: 10px;">Status: Limpo</p>
+            </div>
         </div>
     </main>
 
     <footer>
-        <p>Projeto Agro Forte 2026 - Tecnologia que Alimenta o Mundo</p>
+        <p>AgroForte 2026 - Gestão Visual de Alta Performance</p>
     </footer>
 
     <script src="script.js"></script>

@@ -7,7 +7,7 @@ body {
 }
 
 header {
-    background-color: #1b4d3e; /* Verde escuro do agro */
+    background-color: #1b4d3e;
     color: white;
     text-align: center;
     padding: 20px 10px;
@@ -51,8 +51,17 @@ h2 {
     transform: translateY(-3px);
 }
 
-.icon {
-    font-size: 2.5rem;
+.sensor-titulo {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #777;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+h3 {
+    margin: 5px 0;
+    font-size: 1.2rem;
 }
 
 .valor {
@@ -93,7 +102,7 @@ button:hover {
 
 footer {
     text-align: center;
-    margin-top: 5px;
+    margin-top: 25px;
     color: #777;
     font-size: 0.9rem;
 }

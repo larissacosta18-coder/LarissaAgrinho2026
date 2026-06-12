@@ -3,47 +3,182 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Courier New', Courier, monospace;
+    user-select: none;
 }
 
 body {
     overflow: hidden;
-    background: #70b5e8;
+    background: #4a90e2;
 }
 
-/* Cenário Principal */
 #cenario {
     position: relative;
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(to bottom, #4a90e2 0%, #70b5e8 60%, #9ed149 60%, #6cb130 100%);
+    background: #4a90e2;
     overflow: hidden;
+}
+
+.ceu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: #5fa8e9;
 }
 
 /* Movimento das Nuvens */
 .nuvens-container {
     position: absolute;
-    top: 10%;
-    width: 200%;
-    display: flex;
-    justify-content: space-around;
-    animation: moverNuvens 30s linear infinite;
+    top: 15%;
+    width: 100%;
+    height: 80px;
 }
 
 .nuvem {
-    width: 150px;
-    height: 60px;
-    background: #fff;
-    border-radius: 20px;
-    position: relative;
-    box-shadow: 0 8px 0 #d9d9d9;
+    position: absolute;
+    width: 110px;
+    height: 45px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 4px 5px 0px rgba(0, 0, 0, 0.15);
+    animation: moverNuvens 25s linear infinite;
 }
+
+.nuvem::before {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: -15px;
+    width: 45px;
+    height: 45px;
+    background: #ffffff;
+    border-radius: 12px;
+}
+
+.n1 { top: 0px; animation-duration: 28s; opacity: 0.9; }
+.n2 { top: 30px; animation-duration: 18s; animation-delay: -5s; transform: scale(0.7); opacity: 0.8; }
 
 @keyframes moverNuvens {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% { left: -150px; }
+    100% { left: 100vw; }
 }
 
-/* Textura da Grama Pixelada */
+/* Solo / Vários tons de verde na grama */
 .grama-textura {
     position: absolute;
-    bottom:
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background-color: #5c9e31;
+    background-image: 
+        conic-gradient(from 0deg at 25% 25%, #4d8628 25%, transparent 0),
+        conic-gradient(from 0deg at 75% 75%, #69b33a 25%, transparent 0);
+    background-size: 16px 16px;
+    border-top: 6px solid #457723;
+    padding: 20px;
+}
+
+/* Painel UI Verde Escuro */
+.painel-info {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background: #1e3c15;
+    border: 4px solid #0f1f0a;
+    box-shadow: 5px 5px 0px rgba(0,0,0,0.3);
+    padding: 20px;
+    width: 420px;
+    color: #a4e672;
+    z-index: 10;
+}
+
+.painel-info h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #c1ff8a;
+    letter-spacing: 1px;
+}
+
+.painel-info p {
+    font-size: 14px;
+    margin: 6px 0;
+    line-height: 1.4;
+}
+
+.painel-info span {
+    color: #ffffff;
+}
+
+.linha-tracejada {
+    border-bottom: 2px dashed #417a2e; 
+    margin-bottom: 8px;
+}
+
+.divisor {
+    height: 2px;
+    background: dashed #417a2e;
+    margin: 15px 0;
+}
+
+.cor-mercado {
+    color: #a4e672 !important;
+}
+
+/* Plantação */
+.plantacao {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 20px;
+    max-width: 90%;
+    margin: 10px auto;
+    justify-items: center;
+    align-items: center;
+}
+
+.planta {
+    font-size: 40px;
+    display: inline-block;
+    transform-origin: bottom center;
+    animation: brisa 3s ease-in-out infinite alternate;
+    filter: drop-shadow(2px 3px 0px rgba(0,0,0,0.2));
+}
+
+@keyframes brisa {
+    0% { transform: rotate(-3deg) scale(1); }
+    100% { transform: rotate(5deg) scale(1.05); }
+}
+
+/* Caixa de Seleção Inferior */
+.seletor-cultura {
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    background: #ffffff;
+    border: 4px solid #000000;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+    z-index: 10;
+    font-weight: bold;
+    color: #000000;
+}
+
+.seletor-cultura label {
+    font-size: 15px;
+}
+
+.seletor-cultura select, .seletor-cultura input {
+    font-size: 15px;
+    padding: 4px 8px;
+    border: 2px solid #000000;
+    background: #fff;
+    font-weight: bold;
+    outline: none;
+}
+
+.seletor-cultura select {
+    cursor: pointer;
+}

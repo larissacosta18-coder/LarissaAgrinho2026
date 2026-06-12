@@ -1,4 +1,3 @@
-// Banco de dados do jogo
 const dadosPlantas = {
     soja: {
         emoji: '🌿',
@@ -30,14 +29,14 @@ function atualizarCampo() {
 
     const dados = dadosPlantas[culturaEscolhida];
 
-    // 1. Atualiza textos e cotações na tela
+    // Atualiza cabeçalhos e informações do painel
     document.getElementById('cultura-titulo').innerText = culturaEscolhida.toUpperCase();
     document.getElementById('cotacao-valor').innerText = `R$ ${dados.cotacaoBRL.toFixed(2)} / US$ ${dados.cotacaoUSD.toFixed(2)}`;
     
     const alqueires = hectares * 2;
     document.getElementById('txt-hectares').innerText = `${hectares} ha (${alqueires} alqueires)`;
 
-    // Calcula o Saldo Dinâmico automaticamente baseado nos Hectares inseridos
+    // Recalcula o saldo de forma dinâmica com base nos hectares alterados
     const saldoBRL = hectares * dados.cotacaoBRL;
     const saldoUSD = hectares * dados.cotacaoUSD;
     
@@ -45,18 +44,19 @@ function atualizarCampo() {
         `R$ ${saldoBRL.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} / ` +
         `US$ ${saldoUSD.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
-    // 2. Cria as plantinhas e adiciona o efeito do vento
+    // Limpa e reinsere as plantas com tempos de animação orgânicos
     const campo = document.getElementById('campo-plantas');
     campo.innerHTML = ''; 
 
+    // Cria 16 plantas enfileiradas na textura
     for (let i = 0; i < 16; i++) {
         const novaPlanta = document.createElement('div');
         novaPlanta.className = 'planta';
         novaPlanta.innerText = dados.emoji;
         
-        // Deixa o balanço de cada planta assíncrono para parecer vento de verdade
+        // Variação de tempo para o efeito de vento não ficar sincronizado artificialmente
         const delayBrisa = (Math.random() * 2).toFixed(2);
-        const duracaoBrisa = (2 + Math.random() * 1.5).toFixed(2);
+        const duracaoBrisa = (1.8 + Math.random() * 1.2).toFixed(2);
         novaPlanta.style.animationDelay = `${delayBrisa}s`;
         novaPlanta.style.animationDuration = `${duracaoBrisa}s`;
 
@@ -64,11 +64,9 @@ function atualizarCampo() {
     }
 }
 
-// Fica de olho nas mudanças dos inputs para atualizar os valores na hora
 document.getElementById('culturas').addEventListener('change', atualizarCampo);
 document.getElementById('input-hectares').addEventListener('input', atualizarCampo);
 
-// Inicia rodando a função assim que a página abre
 window.onload = function() {
     atualizarCampo();
 };

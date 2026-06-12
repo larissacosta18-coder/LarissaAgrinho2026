@@ -9,12 +9,23 @@
 <body>
 
 <div id="cenario">
-    <div class="ceu">
+    <div class="ceu-gradient">
         <div class="nuvens-container">
             <div class="nuvem n1"></div>
             <div class="nuvem n2"></div>
-            <div class="nuvem n3"></div>
         </div>
+    </div>
+
+    <div class="morro-background">
+        <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="#4c8c13" d="M0,192C288,256,576,128,864,160C1152,192,1344,256,1440,288L1440,320L0,320Z"></path>
+        </svg>
+    </div>
+
+    <div class="morro-frente">
+        <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="#559e1d" d="M0,224C144,192,288,160,432,192C576,224,720,288,864,256C1008,224,1152,96,1296,128C1440,160,1440,160,1440,320L0,320Z"></path>
+        </svg>
     </div>
 
     <div class="painel-info">
@@ -35,11 +46,11 @@
         <p>AVEIA: <span class="cor-mercado">R$ 1.300,00 / US$ 260,00</span></p>
     </div>
 
-    <div class="container-isometrico">
-        <div class="grama-textura">
-            <div id="campo-plantas" class="plantacao"></div>
-        </div>
+    <div class="chao-cultivo">
+        <div id="campo-plantas" class="plantacao"></div>
     </div>
+
+    <div class="gramado-rodape"></div>
 
     <div class="seletor-cultura">
         <div style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">

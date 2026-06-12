@@ -9,42 +9,41 @@
 body {
     overflow: hidden;
     background: #5fa8e9;
-    perspective: 1000px; /* Ativa o ambiente 3D na página */
 }
 
 #cenario {
     position: relative;
     width: 100vw;
     height: 100vh;
-    background: #5fa8e9;
     overflow: hidden;
 }
 
-.ceu {
+/* Céu com degradê vertical do azul para o lilás claro igual à imagem */
+.ceu-gradient {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 40%;
-    background: linear-gradient(to bottom, #4fa2e6, #79bbf2);
+    height: 60%;
+    background: linear-gradient(to bottom, #5d8bf2 0%, #8ca9f5 60%, #b5c7f7 100%);
     z-index: 1;
 }
 
-/* Nuvens Flutuantes */
+/* Nuvens pixeladas flutuantes */
 .nuvens-container {
     position: absolute;
-    top: 15%;
+    top: 10%;
     width: 100%;
     height: 80px;
 }
 
 .nuvem {
     position: absolute;
-    width: 130px;
-    height: 45px;
+    width: 120px;
+    height: 40px;
     background: #ffffff;
-    border-radius: 50px;
-    box-shadow: 4px 5px 0px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    box-shadow: 4px 6px 0px rgba(0, 0, 0, 0.05);
     animation: moverNuvens linear infinite;
 }
 
@@ -54,126 +53,137 @@ body {
     background: #ffffff;
     border-radius: 50%;
 }
+.nuvem::before { bottom: 12px; left: 15px; width: 45px; height: 45px; }
+.nuvem::after { bottom: 12px; right: 15px; width: 55px; height: 55px; }
 
-.nuvem::before { bottom: 15px; left: 15px; width: 45px; height: 45px; }
-.nuvem::after { bottom: 15px; right: 20px; width: 55px; height: 55px; }
-
-.n1 { top: -20px; animation-duration: 45s; opacity: 0.9; left: -150px; }
-.n2 { top: 20px; animation-duration: 32s; animation-delay: -5s; transform: scale(0.7); opacity: 0.8; left: -150px; }
-.n3 { top: 0px; animation-duration: 55s; animation-delay: -15s; transform: scale(0.85); opacity: 0.75; left: -150px; }
+.n1 { top: 10px; animation-duration: 35s; opacity: 0.9; left: -150px; }
+.n2 { top: 50px; animation-duration: 25s; animation-delay: -7s; transform: scale(0.75); opacity: 0.8; left: -150px; }
 
 @keyframes moverNuvens {
     0% { transform: translateX(-160px); }
     100% { transform: translateX(110vw); }
 }
 
-/* Container que deita o chão em Perspectiva Isométrica (Falso 3D) */
-.container-isometrico {
+/* Morro de Trás (Verde Oliva/Escuro) */
+.morro-background {
     position: absolute;
-    bottom: -15%;
-    left: 50%;
-    transform: translateX(-50%) rotateX(55deg) rotateZ(-45deg);
-    transform-style: preserve-3d;
-    z-index: 2;
-}
-
-/* O Campo de Grama Inclinado com Listras Alternadas de Verde */
-.grama-textura {
-    width: 85vw;
-    height: 85vw;
-    max-width: 900px;
-    max-height: 900px;
-    background-color: #559e1d; /* Verde Claro */
-    /* Cria as linhas/fileiras perfeitas alternando verde claro e escuro */
-    background-image: linear-gradient(90deg, #468717 50%, transparent 50%);
-    background-size: 60px 100%;
-    border: 12px solid #32630f;
-    box-shadow: 20px 20px 0px rgba(0, 0, 0, 0.15);
-    padding: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Grid de Plantação que acompanha as linhas da fazenda */
-.plantacao {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 35px;
+    top: 28%;
+    left: 0;
     width: 100%;
-    height: 100%;
-    justify-items: center;
-    align-items: center;
+    height: 300px;
+    z-index: 2;
+    line-height: 0;
+}
+.morro-background svg { width: 100%; height: 100%; }
+
+/* Morro da Frente (Verde Grama Claro) */
+.morro-frente {
+    position: absolute;
+    top: 32%;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    z-index: 3;
+    line-height: 0;
+}
+.morro-frente svg { width: 100%; height: 100%; }
+
+/* Chão Plano de Baixo onde a plantação fica organizada e segura */
+.chao-cultivo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 45%;
+    background-color: #559e1d;
+    /* Adiciona a textura leve de pontinhos orgânicos no solo */
+    background-image: radial-gradient(#437d16 15%, transparent 15%);
+    background-size: 14px 14px;
+    z-index: 4;
+    padding: 30px 40px;
 }
 
-/* As plantas compensam a rotação do chão para ficarem "em pé" olhando pro jogador */
-.planta {
-    font-size: 55px;
-    display: inline-block;
-    /* Desfaz a inclinação do chão para a planta ficar reta verticalmente */
-    transform: rotateZ(45deg) rotateX(-55deg) scale(1.3);
-    transform-origin: bottom center;
-    animation: brisaIsometrica 3s ease-in-out infinite alternate;
-    filter: drop-shadow(5px 10px 2px rgba(0,0,0,0.2));
+/* Moldura de Folhas de Grama escuras no rodapé da imagem */
+.gramado-rodape {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 25px;
+    background-color: #315e10;
+    z-index: 6;
+    /* Padrão repetido que imita pequenas folhinhas subindo */
+    background-image: linear-gradient(45deg, transparent 75%, #315e10 75%), 
+                      linear-gradient(-45deg, transparent 75%, #315e10 75%);
+    background-size: 20px 40px;
 }
 
-@keyframes brisaIsometrica {
-    0% { transform: rotateZ(45deg) rotateX(-55deg) rotateY(-5deg); }
-    100% { transform: rotateZ(45deg) rotateX(-55deg) rotateY(7deg) scale(1.35); }
-}
-
-/* Interface de Informações */
+/* Painel UI Verde Escuro Clássico */
 .painel-info {
     position: absolute;
     top: 25px;
     left: 25px;
-    background: rgba(37, 71, 26, 0.96);
-    border: 3px solid #142b0d;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    padding: 22px;
+    background: rgba(29, 56, 21, 0.95);
+    border: 3px solid #0f210a;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0px rgba(0,0,0,0.2);
+    padding: 20px;
     width: 430px;
-    color: #99db62;
+    color: #90d459;
     z-index: 10;
-    backdrop-filter: blur(4px);
 }
 
 .painel-info h3 {
     font-size: 16px;
-    font-weight: bold;
     margin-bottom: 5px;
-    color: #b0f57a;
-    letter-spacing: 1px;
+    color: #a7f26b;
+    font-weight: bold;
 }
 
 .painel-info p {
     font-size: 14px;
     margin: 8px 0;
-    font-weight: bold;
 }
 
-.painel-info span {
-    color: #ffffff;
+.painel-info span { color: #ffffff; }
+.linha-tracejada, .divisor { border-bottom: 2px dashed #3a6e22; margin-bottom: 6px; }
+.divisor { margin: 12px 0; }
+.cor-mercado { color: #90d459 !important; }
+
+/* Grid Alinhado Reto (Sem inclinações bugadas) */
+.plantacao {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-gap: 20px;
+    max-width: 95%;
+    margin: 0 auto;
+    justify-items: center;
 }
 
-.linha-tracejada, .divisor {
-    border-bottom: 2px dashed #3d7512; 
-    margin-bottom: 8px;
+/* Plantas em pé com efeito de balanço orgânico */
+.planta {
+    font-size: 46px;
+    display: inline-block;
+    transform-origin: bottom center;
+    animation: brisaFirme 2.8s ease-in-out infinite alternate;
+    filter: drop-shadow(2px 4px 0px rgba(0,0,0,0.15));
 }
 
-.divisor { margin: 15px 0; }
-.cor-mercado { color: #99db62 !important; }
+@keyframes brisaFirme {
+    0% { transform: rotate(-4deg); }
+    100% { transform: rotate(4deg) scaleY(1.03); }
+}
 
-/* Caixa de Controle Inferior Direita */
+/* Menu de Controle Inferior Direito */
 .seletor-cultura {
     position: absolute;
-    bottom: 25px;
+    bottom: 35px;
     right: 25px;
     background: #ffffff;
     border: 3px solid #000000;
-    border-radius: 14px;
-    padding: 18px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
     z-index: 10;
     font-weight: bold;
     color: #000000;
@@ -182,9 +192,9 @@ body {
 
 .seletor-cultura select, .seletor-cultura input {
     font-size: 14px;
-    padding: 6px 10px;
+    padding: 5px 8px;
     border: 2px solid #000000;
-    border-radius: 8px;
+    border-radius: 6px;
     background: #fff;
     font-weight: bold;
     outline: none;

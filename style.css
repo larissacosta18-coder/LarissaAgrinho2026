@@ -24,11 +24,30 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 60%;
-    background: #5fa8e9; /* Tom de azul idêntico ao print */
+    height: 55%;
+    background: #5fa8e9;
 }
 
-/* Nuvens Flutuantes Pixeladas */
+/* Transição Fluída em Onda */
+.onda-transicao {
+    position: absolute;
+    top: 54%;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+    z-index: 1;
+}
+
+.onda-transicao svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 60px;
+}
+
+/* Nuvens Flutuantes Suaves */
 .nuvens-container {
     position: absolute;
     top: 15%;
@@ -38,64 +57,77 @@ body {
 
 .nuvem {
     position: absolute;
-    width: 120px;
-    height: 50px;
+    width: 130px;
+    height: 45px;
     background: #ffffff;
-    border-radius: 15px;
-    box-shadow: 4px 5px 0px rgba(0, 0, 0, 0.1);
-    animation: moverNuvens 25s linear infinite;
+    border-radius: 50px;
+    box-shadow: 4px 5px 0px rgba(0, 0, 0, 0.08);
+    animation: moverNuvens linear infinite;
 }
 
 .nuvem::before {
     content: '';
     position: absolute;
-    bottom: 12px;
-    left: -20px;
-    width: 50px;
-    height: 50px;
+    bottom: 15px;
+    left: 15px;
+    width: 45px;
+    height: 45px;
     background: #ffffff;
-    border-radius: 15px;
+    border-radius: 50%;
 }
 
-.n1 { top: 0px; animation-duration: 32s; opacity: 0.95; }
-.n2 { top: 40px; animation-duration: 22s; animation-delay: -7s; transform: scale(0.75); opacity: 0.85; }
+.nuvem::after {
+    content: '';
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    width: 55px;
+    height: 55px;
+    background: #ffffff;
+    border-radius: 50%;
+}
+
+.n1 { top: -20px; animation-duration: 38s; opacity: 0.9; left: -150px; }
+.n2 { top: 30px; animation-duration: 26s; animation-delay: -5s; transform: scale(0.7); opacity: 0.8; left: -150px; }
+.n3 { top: 10px; animation-duration: 45s; animation-delay: -12s; transform: scale(0.85); opacity: 0.75; left: -150px; }
 
 @keyframes moverNuvens {
-    0% { left: -160px; }
-    100% { left: 100vw; }
+    0% { transform: translateX(-160px); }
+    100% { transform: translateX(110vw); }
 }
 
-/* Grama com Textura de Pontinhos Pixelados (Estilo a foto original) */
+/* Grama com Textura Fluída e Pontinhos */
 .grama-textura {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 40%;
-    background-color: #559e1d; /* Verde base */
-    /* Cria o padrão exato de pontinhos escuros alinhados */
+    height: 46%;
+    background-color: #559e1d; 
     background-image: radial-gradient(#3d7512 20%, transparent 20%);
-    background-size: 14px 14px; 
-    border-top: 6px solid #3d7512;
-    padding: 30px 50px;
+    background-size: 16px 16px; 
+    padding: 40px 50px;
+    z-index: 2;
 }
 
-/* Painel UI Verde Escuro com Borda */
+/* Painel UI Verde Escuro Modernizado */
 .painel-info {
     position: absolute;
     top: 25px;
     left: 25px;
-    background: #25471a;
-    border: 4px solid #142b0d;
-    box-shadow: 6px 6px 0px rgba(0,0,0,0.25);
-    padding: 20px;
+    background: rgba(37, 71, 26, 0.95);
+    border: 3px solid #142b0d;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    padding: 22px;
     width: 430px;
     color: #99db62;
     z-index: 10;
+    backdrop-filter: blur(4px);
 }
 
 .painel-info h3 {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     margin-bottom: 5px;
     color: #b0f57a;
@@ -127,58 +159,64 @@ body {
     color: #99db62 !important;
 }
 
-/* Disposição das Plantas em Linha Semelhante à Foto */
+/* Distribuição Organizada das Plantas */
 .plantacao {
     display: flex;
     flex-wrap: wrap;
-    gap: 35px;
+    gap: 30px;
     justify-content: center;
     align-items: center;
     max-width: 95%;
     margin: 0 auto;
 }
 
-/* Efeito de balanço físico real de vento */
+/* Efeito de Balanço Muito Mais Fluído (Brisa Wave) */
 .planta {
-    font-size: 45px;
+    font-size: 46px;
     display: inline-block;
     transform-origin: bottom center;
-    animation: brisaVento 2.5s ease-in-out infinite alternate;
-    filter: drop-shadow(3px 3px 0px rgba(0,0,0,0.15));
+    animation: brisaSuave 3s ease-in-out infinite alternate;
+    filter: drop-shadow(3px 4px 2px rgba(0,0,0,0.12));
+    transition: transform 0.3s ease;
 }
 
-@keyframes brisaVento {
-    0% { transform: rotate(-4deg); }
-    100% { transform: rotate(6deg) scaleY(1.03); }
+@keyframes brisaSuave {
+    0% { transform: rotate(-5deg) skewX(-2deg); }
+    100% { transform: rotate(5deg) skewX(2deg) scaleY(1.04); }
 }
 
-/* Caixa de Controle Inferior Esquerda/Direita */
+/* Caixa de Controle Inferior Direita Fluída */
 .seletor-cultura {
     position: absolute;
     bottom: 25px;
     right: 25px;
     background: #ffffff;
-    border: 4px solid #000000;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+    border: 3px solid #000000;
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
     z-index: 10;
     font-weight: bold;
     color: #000000;
-    width: 280px;
+    width: 290px;
 }
 
 .seletor-cultura label {
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .seletor-cultura select, .seletor-cultura input {
-    font-size: 15px;
-    padding: 4px 6px;
+    font-size: 14px;
+    padding: 6px 10px;
     border: 2px solid #000000;
-    border-radius: 4px;
+    border-radius: 8px;
     background: #fff;
     font-weight: bold;
     outline: none;
     text-align: center;
+    transition: all 0.2s ease;
+}
+
+.seletor-cultura select:hover, .seletor-cultura input:hover {
+    background: #f0f0f0;
 }

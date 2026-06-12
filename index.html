@@ -1,22 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroForte - Simulador de Safra</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
 <div id="cenario">
+    <div class="ceu">
+        <div class="nuvens-container">
+            <div class="nuvem n1"></div>
+            <div class="nuvem n2"></div>
+        </div>
+    </div>
+
     <div class="painel-info">
         <h3 id="resumo-titulo">RESUMO DA SAFRA</h3>
+        <div class="linha-tracejada"></div>
         <p>Cultura Atual: <span id="cultura-titulo">MILHO</span></p>
         <p>Cotação Hoje: <span id="cotacao-valor">R$ 52,00 / US$ 10,40</span></p>
         <p>Hectares: <span id="txt-hectares">250 ha (500 alqueires)</span></p>
         <p>Saldo: <span id="saldo-valor">R$ 13.000,00 / US$ 2.600,00</span></p>
-        <p>Dia: 15/30</p>
+        <p>Dia: <span>15/30</span></p>
 
         <div class="divisor"></div>
 
-        <h3>VALORES DO MERCADO (POR HA)</h3>
-        <p>SOJA: R$ 6,00 / US$ 1,20</p>
-        <p>MILHO: R$ 52,00 / US$ 10,40</p>
-        <p>AVEIA: R$ 5,20 / US$ 1,04</p>
-    </div>
-
-    <div class="nuvens-container">
-        <div class="nuvem"></div>
+        <h3>VALORES DO MERCADO (500 ALQUEIRES)</h3>
+        <div class="linha-tracejada"></div>
+        <p>SOJA:  <span class="cor-mercado">R$ 1.500,00 / US$ 300,00</span></p>
+        <p>MILHO: <span class="cor-mercado">R$ 1.625,00 / US$ 325,00</span></p>
+        <p>AVEIA: <span class="cor-mercado">R$ 1.300,00 / US$ 260,00</span></p>
     </div>
 
     <div class="grama-textura">
@@ -24,9 +39,9 @@
     </div>
 
     <div class="seletor-cultura">
-        <div style="margin-bottom: 8px;">
+        <div style="margin-bottom: 10px;">
             <label for="input-hectares">Hectares (ha): </label>
-            <input type="number" id="input-hectares" value="250" min="0" style="width: 70px; font-family: monospace; padding: 3px;">
+            <input type="number" id="input-hectares" value="250" min="1" max="1000" style="width: 80px;">
         </div>
         <div>
             <label for="culturas">Mudar Planta: </label>
@@ -38,3 +53,7 @@
         </div>
     </div>
 </div>
+
+<script src="script.js"></script>
+</body>
+</html>

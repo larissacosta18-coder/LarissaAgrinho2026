@@ -45,14 +45,13 @@ function atualizarCampo() {
     const campo = document.getElementById('campo-plantas');
     campo.innerHTML = ''; 
 
-    // Define 36 plantas perfeitamente alinhadas nos blocos 3D do terreno
-    for (let i = 0; i < 36; i++) {
+    // Preenche a fazenda com 30 plantinhas bem divididas e estáveis
+    for (let i = 0; i < 30; i++) {
         const novaPlanta = document.createElement('div');
         novaPlanta.className = 'planta';
         novaPlanta.innerText = dados.emoji;
         
-        // Aplica atrasos diferentes na animação para simular o vento passando pelo campo tridimensional
-        const delayBrisa = (Math.random() * 2.5).toFixed(2);
+        const delayBrisa = (Math.random() * 2.0).toFixed(2);
         const duracaoBrisa = (2.2 + Math.random() * 1.0).toFixed(2);
         novaPlanta.style.animationDelay = `${delayBrisa}s`;
         novaPlanta.style.animationDuration = `${duracaoBrisa}s`;

@@ -24,33 +24,31 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 55%;
+    height: 50%;
     background: #5fa8e9;
 }
 
-/* Transição Fluída em Onda */
-.onda-transicao {
+/* Sistema de Curvas e Morros Fluídos (Overlaps de Verde) */
+.morro {
     position: absolute;
-    top: 54%;
     left: 0;
     width: 100%;
-    overflow: hidden;
     line-height: 0;
-    transform: rotate(180deg);
-    z-index: 1;
 }
 
-.onda-transicao svg {
-    position: relative;
-    display: block;
-    width: calc(100% + 1.3px);
-    height: 60px;
+.morro svg {
+    width: 100%;
+    height: 80px;
 }
 
-/* Nuvens Flutuantes Suaves */
+.morro-atras { top: 40%; z-index: 1; opacity: 0.7; }
+.morro-meio { top: 43%; z-index: 2; opacity: 0.9; }
+.morro-frente { top: 46%; z-index: 3; }
+
+/* Nuvens Flutuantes */
 .nuvens-container {
     position: absolute;
-    top: 15%;
+    top: 12%;
     width: 100%;
     height: 80px;
 }
@@ -61,64 +59,52 @@ body {
     height: 45px;
     background: #ffffff;
     border-radius: 50px;
-    box-shadow: 4px 5px 0px rgba(0, 0, 0, 0.08);
+    box-shadow: 4px 5px 0px rgba(0, 0, 0, 0.06);
     animation: moverNuvens linear infinite;
 }
 
-.nuvem::before {
+.nuvem::before, .nuvem::after {
     content: '';
     position: absolute;
-    bottom: 15px;
-    left: 15px;
-    width: 45px;
-    height: 45px;
     background: #ffffff;
     border-radius: 50%;
 }
 
-.nuvem::after {
-    content: '';
-    position: absolute;
-    bottom: 15px;
-    right: 20px;
-    width: 55px;
-    height: 55px;
-    background: #ffffff;
-    border-radius: 50%;
-}
+.nuvem::before { bottom: 15px; left: 15px; width: 45px; height: 45px; }
+.nuvem::after { bottom: 15px; right: 20px; width: 55px; height: 55px; }
 
-.n1 { top: -20px; animation-duration: 38s; opacity: 0.9; left: -150px; }
-.n2 { top: 30px; animation-duration: 26s; animation-delay: -5s; transform: scale(0.7); opacity: 0.8; left: -150px; }
-.n3 { top: 10px; animation-duration: 45s; animation-delay: -12s; transform: scale(0.85); opacity: 0.75; left: -150px; }
+.n1 { top: -20px; animation-duration: 40s; opacity: 0.9; left: -150px; }
+.n2 { top: 30px; animation-duration: 28s; animation-delay: -5s; transform: scale(0.7); opacity: 0.8; left: -150px; }
+.n3 { top: 10px; animation-duration: 48s; animation-delay: -15s; transform: scale(0.85); opacity: 0.75; left: -150px; }
 
 @keyframes moverNuvens {
     0% { transform: translateX(-160px); }
     100% { transform: translateX(110vw); }
 }
 
-/* Grama com Textura Fluída e Pontinhos */
+/* Solo / Grama Principal (Verde mais escuro com pontinhos abaixo das curvas) */
 .grama-textura {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 46%;
+    height: 48%;
     background-color: #559e1d; 
-    background-image: radial-gradient(#3d7512 20%, transparent 20%);
+    background-image: radial-gradient(#3d7512 22%, transparent 22%);
     background-size: 16px 16px; 
-    padding: 40px 50px;
-    z-index: 2;
+    padding: 50px 40px;
+    z-index: 4; /* Fica por cima de todas as curvas */
 }
 
-/* Painel UI Verde Escuro Modernizado */
+/* Interface Gráfica */
 .painel-info {
     position: absolute;
     top: 25px;
     left: 25px;
-    background: rgba(37, 71, 26, 0.95);
+    background: rgba(37, 71, 26, 0.96);
     border: 3px solid #142b0d;
     border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
     padding: 22px;
     width: 430px;
     color: #99db62;
@@ -144,48 +130,39 @@ body {
     color: #ffffff;
 }
 
-.linha-tracejada {
+.linha-tracejada, .divisor {
     border-bottom: 2px dashed #3d7512; 
     margin-bottom: 8px;
 }
 
-.divisor {
-    height: 2px;
-    background: dashed #3d7512;
-    margin: 15px 0;
-}
+.divisor { margin: 15px 0; }
+.cor-mercado { color: #99db62 !important; }
 
-.cor-mercado {
-    color: #99db62 !important;
-}
-
-/* Distribuição Organizada das Plantas */
+/* Grid de Plantação Otimizado para caber muitas plantas */
 .plantacao {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-    align-items: center;
-    max-width: 95%;
+    display: grid;
+    grid-template-columns: repeat(11, 1fr); /* 11 colunas para espalhar melhor */
+    grid-gap: 18px;
+    max-width: 98%;
     margin: 0 auto;
+    justify-items: center;
 }
 
-/* Efeito de Balanço Muito Mais Fluído (Brisa Wave) */
+/* Balanço Fluído */
 .planta {
-    font-size: 46px;
+    font-size: 42px;
     display: inline-block;
     transform-origin: bottom center;
     animation: brisaSuave 3s ease-in-out infinite alternate;
     filter: drop-shadow(3px 4px 2px rgba(0,0,0,0.12));
-    transition: transform 0.3s ease;
 }
 
 @keyframes brisaSuave {
-    0% { transform: rotate(-5deg) skewX(-2deg); }
-    100% { transform: rotate(5deg) skewX(2deg) scaleY(1.04); }
+    0% { transform: rotate(-6deg) skewX(-2deg); }
+    100% { transform: rotate(6deg) skewX(2deg) scaleY(1.05); }
 }
 
-/* Caixa de Controle Inferior Direita Fluída */
+/* Caixa de Controle */
 .seletor-cultura {
     position: absolute;
     bottom: 25px;
@@ -201,10 +178,6 @@ body {
     width: 290px;
 }
 
-.seletor-cultura label {
-    font-size: 14px;
-}
-
 .seletor-cultura select, .seletor-cultura input {
     font-size: 14px;
     padding: 6px 10px;
@@ -214,9 +187,4 @@ body {
     font-weight: bold;
     outline: none;
     text-align: center;
-    transition: all 0.2s ease;
-}
-
-.seletor-cultura select:hover, .seletor-cultura input:hover {
-    background: #f0f0f0;
 }

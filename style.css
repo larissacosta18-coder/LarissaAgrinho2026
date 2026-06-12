@@ -8,14 +8,14 @@
 
 body {
     overflow: hidden;
-    background: #4a90e2;
+    background: #5fa8e9;
 }
 
 #cenario {
     position: relative;
     width: 100vw;
     height: 100vh;
-    background: #4a90e2;
+    background: #5fa8e9;
     overflow: hidden;
 }
 
@@ -25,10 +25,10 @@ body {
     left: 0;
     width: 100%;
     height: 60%;
-    background: #5fa8e9;
+    background: #5fa8e9; /* Tom de azul idêntico ao print */
 }
 
-/* Movimento das Nuvens */
+/* Nuvens Flutuantes Pixeladas */
 .nuvens-container {
     position: absolute;
     top: 15%;
@@ -38,74 +38,74 @@ body {
 
 .nuvem {
     position: absolute;
-    width: 110px;
-    height: 45px;
+    width: 120px;
+    height: 50px;
     background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 4px 5px 0px rgba(0, 0, 0, 0.15);
+    border-radius: 15px;
+    box-shadow: 4px 5px 0px rgba(0, 0, 0, 0.1);
     animation: moverNuvens 25s linear infinite;
 }
 
 .nuvem::before {
     content: '';
     position: absolute;
-    bottom: 10px;
-    left: -15px;
-    width: 45px;
-    height: 45px;
+    bottom: 12px;
+    left: -20px;
+    width: 50px;
+    height: 50px;
     background: #ffffff;
-    border-radius: 12px;
+    border-radius: 15px;
 }
 
-.n1 { top: 0px; animation-duration: 28s; opacity: 0.9; }
-.n2 { top: 30px; animation-duration: 18s; animation-delay: -5s; transform: scale(0.7); opacity: 0.8; }
+.n1 { top: 0px; animation-duration: 32s; opacity: 0.95; }
+.n2 { top: 40px; animation-duration: 22s; animation-delay: -7s; transform: scale(0.75); opacity: 0.85; }
 
 @keyframes moverNuvens {
-    0% { left: -150px; }
+    0% { left: -160px; }
     100% { left: 100vw; }
 }
 
-/* Solo / Vários tons de verde na grama */
+/* Grama com Textura de Pontinhos Pixelados (Estilo a foto original) */
 .grama-textura {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 40%;
-    background-color: #5c9e31;
-    background-image: 
-        conic-gradient(from 0deg at 25% 25%, #4d8628 25%, transparent 0),
-        conic-gradient(from 0deg at 75% 75%, #69b33a 25%, transparent 0);
-    background-size: 16px 16px;
-    border-top: 6px solid #457723;
-    padding: 20px;
+    background-color: #559e1d; /* Verde base */
+    /* Cria o padrão exato de pontinhos escuros alinhados */
+    background-image: radial-gradient(#3d7512 20%, transparent 20%);
+    background-size: 14px 14px; 
+    border-top: 6px solid #3d7512;
+    padding: 30px 50px;
 }
 
-/* Painel UI Verde Escuro */
+/* Painel UI Verde Escuro com Borda */
 .painel-info {
     position: absolute;
     top: 25px;
     left: 25px;
-    background: #1e3c15;
-    border: 4px solid #0f1f0a;
-    box-shadow: 5px 5px 0px rgba(0,0,0,0.3);
+    background: #25471a;
+    border: 4px solid #142b0d;
+    box-shadow: 6px 6px 0px rgba(0,0,0,0.25);
     padding: 20px;
-    width: 420px;
-    color: #a4e672;
+    width: 430px;
+    color: #99db62;
     z-index: 10;
 }
 
 .painel-info h3 {
     font-size: 18px;
+    font-weight: bold;
     margin-bottom: 5px;
-    color: #c1ff8a;
+    color: #b0f57a;
     letter-spacing: 1px;
 }
 
 .painel-info p {
     font-size: 14px;
-    margin: 6px 0;
-    line-height: 1.4;
+    margin: 8px 0;
+    font-weight: bold;
 }
 
 .painel-info span {
@@ -113,57 +113,59 @@ body {
 }
 
 .linha-tracejada {
-    border-bottom: 2px dashed #417a2e; 
+    border-bottom: 2px dashed #3d7512; 
     margin-bottom: 8px;
 }
 
 .divisor {
     height: 2px;
-    background: dashed #417a2e;
+    background: dashed #3d7512;
     margin: 15px 0;
 }
 
 .cor-mercado {
-    color: #a4e672 !important;
+    color: #99db62 !important;
 }
 
-/* Plantação */
+/* Disposição das Plantas em Linha Semelhante à Foto */
 .plantacao {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-gap: 20px;
-    max-width: 90%;
-    margin: 10px auto;
-    justify-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 35px;
+    justify-content: center;
     align-items: center;
+    max-width: 95%;
+    margin: 0 auto;
 }
 
+/* Efeito de balanço físico real de vento */
 .planta {
-    font-size: 40px;
+    font-size: 45px;
     display: inline-block;
     transform-origin: bottom center;
-    animation: brisa 3s ease-in-out infinite alternate;
-    filter: drop-shadow(2px 3px 0px rgba(0,0,0,0.2));
+    animation: brisaVento 2.5s ease-in-out infinite alternate;
+    filter: drop-shadow(3px 3px 0px rgba(0,0,0,0.15));
 }
 
-@keyframes brisa {
-    0% { transform: rotate(-3deg) scale(1); }
-    100% { transform: rotate(5deg) scale(1.05); }
+@keyframes brisaVento {
+    0% { transform: rotate(-4deg); }
+    100% { transform: rotate(6deg) scaleY(1.03); }
 }
 
-/* Caixa de Seleção Inferior */
+/* Caixa de Controle Inferior Esquerda/Direita */
 .seletor-cultura {
     position: absolute;
     bottom: 25px;
     right: 25px;
     background: #ffffff;
     border: 4px solid #000000;
+    border-radius: 10px;
     padding: 15px;
-    border-radius: 8px;
     box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
     z-index: 10;
     font-weight: bold;
     color: #000000;
+    width: 280px;
 }
 
 .seletor-cultura label {
@@ -172,13 +174,11 @@ body {
 
 .seletor-cultura select, .seletor-cultura input {
     font-size: 15px;
-    padding: 4px 8px;
+    padding: 4px 6px;
     border: 2px solid #000000;
+    border-radius: 4px;
     background: #fff;
     font-weight: bold;
     outline: none;
-}
-
-.seletor-cultura select {
-    cursor: pointer;
+    text-align: center;
 }

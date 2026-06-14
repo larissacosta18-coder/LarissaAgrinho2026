@@ -28,7 +28,6 @@ body {
     background: #5fa8e9;
 }
 
-/* Sistema de Curvas e Morros Fluídos (Overlaps de Verde) */
 .morro {
     position: absolute;
     left: 0;
@@ -45,7 +44,6 @@ body {
 .morro-meio { top: 43%; z-index: 2; opacity: 0.9; }
 .morro-frente { top: 46%; z-index: 3; }
 
-/* Nuvens Flutuantes */
 .nuvens-container {
     position: absolute;
     top: 12%;
@@ -82,7 +80,6 @@ body {
     100% { transform: translateX(110vw); }
 }
 
-/* Solo / Grama Principal (Verde mais escuro com pontinhos abaixo das curvas) */
 .grama-textura {
     position: absolute;
     bottom: 0;
@@ -93,10 +90,9 @@ body {
     background-image: radial-gradient(#3d7512 22%, transparent 22%);
     background-size: 16px 16px; 
     padding: 50px 40px;
-    z-index: 4; /* Fica por cima de todas as curvas */
+    z-index: 4;
 }
 
-/* Interface Gráfica */
 .painel-info {
     position: absolute;
     top: 25px;
@@ -106,7 +102,7 @@ body {
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.25);
     padding: 22px;
-    width: 430px;
+    width: 460px; /* Um pouco mais largo para acomodar o Euro perfeitamente */
     color: #99db62;
     z-index: 10;
     backdrop-filter: blur(4px);
@@ -124,6 +120,7 @@ body {
     font-size: 14px;
     margin: 8px 0;
     font-weight: bold;
+    line-height: 1.4;
 }
 
 .painel-info span {
@@ -138,17 +135,15 @@ body {
 .divisor { margin: 15px 0; }
 .cor-mercado { color: #99db62 !important; }
 
-/* Grid de Plantação Otimizado para caber muitas plantas */
 .plantacao {
     display: grid;
-    grid-template-columns: repeat(11, 1fr); /* 11 colunas para espalhar melhor */
+    grid-template-columns: repeat(11, 1fr);
     grid-gap: 18px;
     max-width: 98%;
     margin: 0 auto;
     justify-items: center;
 }
 
-/* Balanço Fluído */
 .planta {
     font-size: 42px;
     display: inline-block;
@@ -162,7 +157,6 @@ body {
     100% { transform: rotate(6deg) skewX(2deg) scaleY(1.05); }
 }
 
-/* Caixa de Controle */
 .seletor-cultura {
     position: absolute;
     bottom: 25px;

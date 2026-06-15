@@ -41,18 +41,14 @@
         <div class="linha-tracejada"></div>
         <p>Cultura Atual: <span id="cultura-titulo">MILHO</span></p>
         <p>Cotação da Saca: <span id="cotacao-valor">-</span></p>
-        <p>Área Plantada: <span id="txt-hectares">-</span></p>
-        <p>Faturamento Estimado:</p>
-        <p style="margin-left: 15px;" id="saldo-valor">-</p>
+        <p id="saldo-valor" style="margin-top: 10px; line-height: 1.6;">-</p>
         <p>Dia: <span>15/30</span></p>
 
         <div class="divisor"></div>
 
-        <h3>VALORES DE MERCADO (POR SACA)</h3>
+        <h3>VALOR DE MERCADO ATUAL</h3>
         <div class="linha-tracejada"></div>
-        <p>SOJA:  <span class="cor-mercado">R$ 135,00 | US$ 27,00 | € 24,50</span></p>
-        <p>MILHO: <span class="cor-mercado">R$ 60,00  | US$ 12,00 | € 10,90</span></p>
-        <p>AVEIA: <span class="cor-mercado">R$ 45,00  | US$ 9,00  | € 8,10</span></p>
+        <p><span id="txt-mercado-dinamico" class="cor-mercado">-</span></p>
     </div>
 
     <div class="grama-textura">
@@ -69,7 +65,7 @@
             </select>
         </div>
         <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
-            <label for="input-hectares">Hectares (ha): </label>
+            <label for="input-hectares">Quantidade: </label>
             <input type="number" id="input-hectares" value="250" min="1" max="1000" style="width: 80px;">
         </div>
     </div>
